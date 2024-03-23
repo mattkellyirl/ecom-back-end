@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
       .status(200)
       .json({ message: "GET Request Successful - Categories", getCategories });
   } catch (err) {
-    console.error("GET Request Failed - Categories");
+    console.error("GET Request Failed - Categories", err);
     res
       .status(500)
       .json({ error: "GET Request Failed - Categories", details: err });
@@ -37,14 +37,12 @@ router.get("/:id", async (req, res) => {
       });
     } else {
       // If category not found, return 404 error
-      return res
-        .status(404)
-        .json({ error: "Could not find category", details: err });
+      return res.status(404).json({ error: "Could not find category" });
     }
 
     // Return 500 response if PUT request failed
   } catch (err) {
-    console.error("GET Request Failed - Category ID");
+    console.error("GET Request Failed - Category ID", err);
     res
       .status(500)
       .json({ error: "GET Request Failed - Category ID", details: err });
@@ -62,7 +60,7 @@ router.post("/", async (req, res) => {
       .status(200)
       .json({ message: "POST Request Successful - New Category", newCategory });
   } catch (err) {
-    console.error("POST Request Failed - New Category");
+    console.error("POST Request Failed - New Category", err);
     res
       .status(500)
       .json({ error: "POST Request Failed - New Category", details: err });
@@ -94,13 +92,11 @@ router.put("/:id", async (req, res) => {
       });
     } else {
       // If category not found, return 404 error
-      return res
-        .status(404)
-        .json({ error: "Could not find category", details: err });
+      return res.status(404).json({ error: "Could not find category" });
     }
     // Return 500 response if PUT request failed
   } catch (err) {
-    console.error("PUT Request Failed - Update Category");
+    console.error("PUT Request Failed - Update Category", err);
     res
       .status(500)
       .json({ error: "PUT Request Failed - Update Category", details: err });
@@ -118,9 +114,7 @@ router.delete("/:id", async (req, res) => {
       await deleteCategoryByID.destroy();
     } else {
       // If category not found, return 404 error
-      return res
-        .status(404)
-        .json({ error: "Could not find category", details: err });
+      return res.status(404).json({ error: "Could not find category" });
     }
 
     // Return 200 response if DELETE request successful
@@ -130,7 +124,7 @@ router.delete("/:id", async (req, res) => {
       deleteCategoryByID,
     });
   } catch (err) {
-    console.error("DELETE Request Failed - Delete Category");
+    console.error("DELETE Request Failed - Delete Category", err);
     res
       .status(500)
       .json({ error: "DELETE Request Failed - Delete Category", details: err });
