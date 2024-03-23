@@ -8,12 +8,12 @@ router.get("/", async (req, res) => {
       include: [{ model: Category }, { model: Tag }],
     });
     console.log("GET Request Successful - Products");
-    res
+    return res
       .status(200)
       .json({ message: "Get Request Successful - Products", getProducts });
   } catch (err) {
     console.error("GET Request Failed - Products", err);
-    res
+    return res
       .status(500)
       .json({ error: "GET Request Failed - Products", details: err });
   }
@@ -31,7 +31,7 @@ router.get("/:id", async (req, res) => {
     if (getProductByID) {
       // Return 200 response if GET request successful
       console.log("GET Request Successful - Product by ID");
-      res.status(200).json({
+      return res.status(200).json({
         message: "GET Request Successful - Product by ID",
         getProductByID,
       });
@@ -41,7 +41,7 @@ router.get("/:id", async (req, res) => {
     }
   } catch (err) {
     console.error("GET Request Failed - Products", err);
-    res
+    return res
       .status(500)
       .json({ error: "GET Request Failed - Products", details: err });
   }
@@ -70,12 +70,12 @@ router.post("/", (req, res) => {
         return ProductTag.bulkCreate(productTagIdArr);
       }
       // if no product tags, just respond
-      res.status(200).json(product);
+      return res.status(200).json(product);
     })
     .then((productTagIds) => res.status(200).json(productTagIds))
     .catch((err) => {
       console.log(err);
-      res.status(400).json(err);
+      return res.status(400).json(err);
     });
 });
 
@@ -143,7 +143,7 @@ router.delete("/:id", async (req, res) => {
     });
   } catch (err) {
     console.error("DELETE Request Failed - Product", err);
-    res
+    return res
       .status(500)
       .json({ error: "DELETE Request Failed - Product", details: err });
   }

@@ -8,12 +8,12 @@ router.get("/", async (req, res) => {
       include: [{ model: Product }],
     });
     console.log("GET Request Successful - Categories");
-    res
+    return res
       .status(200)
       .json({ message: "GET Request Successful - Categories", getCategories });
   } catch (err) {
     console.error("GET Request Failed - Categories", err);
-    res
+    return res
       .status(500)
       .json({ error: "GET Request Failed - Categories", details: err });
   }
@@ -31,7 +31,7 @@ router.get("/:id", async (req, res) => {
     if (getCategoryByID) {
       // Return 200 response if GET request successful
       console.log("GET Request Successful - Category ID");
-      res.status(200).json({
+      return res.status(200).json({
         message: "GET Request Successful - Category ID",
         getCategoryByID,
       });
@@ -40,10 +40,10 @@ router.get("/:id", async (req, res) => {
       return res.status(404).json({ error: "Could not find category" });
     }
 
-    // Return 500 response if PUT request failed
+    // Return 500 response if GET request failed
   } catch (err) {
     console.error("GET Request Failed - Category ID", err);
-    res
+    return res
       .status(500)
       .json({ error: "GET Request Failed - Category ID", details: err });
   }
@@ -56,12 +56,12 @@ router.post("/", async (req, res) => {
       category_name: req.body.category_name,
     });
     console.log("POST Request Successful - New Category");
-    res
+    return res
       .status(200)
       .json({ message: "POST Request Successful - New Category", newCategory });
   } catch (err) {
     console.error("POST Request Failed - New Category", err);
-    res
+    return res
       .status(500)
       .json({ error: "POST Request Failed - New Category", details: err });
   }
@@ -86,7 +86,7 @@ router.put("/:id", async (req, res) => {
 
       // Return 200 response if PUT request successful
       console.log("PUT Request Successful - Update Category");
-      res.status(200).json({
+      return res.status(200).json({
         message: "PUT Request Successful - Update Category",
         updateCategoryByID,
       });
@@ -97,7 +97,7 @@ router.put("/:id", async (req, res) => {
     // Return 500 response if PUT request failed
   } catch (err) {
     console.error("PUT Request Failed - Update Category", err);
-    res
+    return res
       .status(500)
       .json({ error: "PUT Request Failed - Update Category", details: err });
   }
@@ -119,13 +119,13 @@ router.delete("/:id", async (req, res) => {
 
     // Return 200 response if DELETE request successful
     console.log("DELETE Request Successful - Delete Category");
-    res.status(200).json({
+    return res.status(200).json({
       message: "DELETE Request Successful - Delete Category",
       deleteCategoryByID,
     });
   } catch (err) {
     console.error("DELETE Request Failed - Delete Category", err);
-    res
+    return res
       .status(500)
       .json({ error: "DELETE Request Failed - Delete Category", details: err });
   }
