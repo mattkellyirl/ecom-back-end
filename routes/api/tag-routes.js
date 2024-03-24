@@ -125,10 +125,10 @@ router.delete("/:id", async (req, res) => {
     });
   } catch (err) {
     // Return 500 response if DELETE request failed
-    console.error("DELETE Request Failed - DELETE Tag", err);
+    console.error("DELETE Request Failed - Delete Tag", err);
     return res
       .status(500)
-      .json({ error: "DELETE Request Failed - DELETE Tag", details: err });
+      .json({ error: "DELETE Request Failed - Delete Tag", details: err });
   }
 });
 

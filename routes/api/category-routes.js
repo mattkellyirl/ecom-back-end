@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
     const getCategories = await Category.findAll({
       include: [{ model: Product }],
     });
-    // Return 200 response if GET request succesful
+    // Return 200 response if GET request successful
     console.log("GET Request Successful - Categories");
     return res
       .status(200)
@@ -86,7 +86,6 @@ router.put("/:id", async (req, res) => {
           },
         }
       );
-
       // Return 200 response if PUT request successful
       console.log("PUT Request Successful - Update Category");
       return res.status(200).json({

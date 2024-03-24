@@ -43,10 +43,10 @@ router.get("/:id", async (req, res) => {
     }
   } catch (err) {
     // Return 500 response if GET request failed
-    console.error("GET Request Failed - Products", err);
+    console.error("GET Request Failed - Product by ID", err);
     return res
       .status(500)
-      .json({ error: "GET Request Failed - Products", details: err });
+      .json({ error: "GET Request Failed - Product by ID", details: err });
   }
 });
 
@@ -146,10 +146,10 @@ router.delete("/:id", async (req, res) => {
     });
   } catch (err) {
     // Return 500 response if DELETE request failed
-    console.error("DELETE Request Failed - Product", err);
+    console.error("DELETE Request Failed - Delete Product", err);
     return res
       .status(500)
-      .json({ error: "DELETE Request Failed - Product", details: err });
+      .json({ error: "DELETE Request Failed - Delete Product", details: err });
   }
 });
 
