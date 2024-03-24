@@ -22,7 +22,7 @@ To install this application, clone this repository to your local machine and ins
 
 ## Usage
 
-To view a live demonstation of this application, please visit this [link](https://note-taker-matt-kelly-3d734cb4b9bf.herokuapp.com/). Before running this application locally, create a .env file inside the root directory and add your MySQL credentials like the following:
+To view a live demonstation of this application, please visit this [link](https://www.youtube.com/watch?v=kaXNVYw36Us/). Before running this application locally, create a .env file inside the root directory and add your MySQL credentials like the following:
 
 **DB_NAME='ecommerce_db'**<br>
 **DB_USER='your_user'**<br>
@@ -44,7 +44,7 @@ Add a new category to **'ecommerce_db'**.
 
 <img src ="./assets/addnew.png"></img>
 
-Routes are setup for users to also update and delete categories, products and tags. View the live demonstration to see the functionality of these routes by visiting this [link](https://note-taker-matt-kelly-3d734cb4b9bf.herokuapp.com/).
+Routes are setup for users to also update and delete categories, products and tags. View the live demonstration to see the functionality of these routes by visiting this [link](https://www.youtube.com/watch?v=kaXNVYw36Us/).
 
 ## Contribution Guidelines
 
