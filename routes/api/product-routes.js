@@ -7,11 +7,13 @@ router.get("/", async (req, res) => {
     const getProducts = await Product.findAll({
       include: [{ model: Category }, { model: Tag }],
     });
+    // Return 200 response if GET request successful
     console.log("GET Request Successful - Products");
     return res
       .status(200)
       .json({ message: "Get Request Successful - Products", getProducts });
   } catch (err) {
+    // Return 500 response if GET request failed
     console.error("GET Request Failed - Products", err);
     return res
       .status(500)
@@ -36,10 +38,11 @@ router.get("/:id", async (req, res) => {
         getProductByID,
       });
     } else {
-      // If category not found, return 404 error
+      // Return 404 response if product not found
       return res.status(404).json({ error: "Could not find product" });
     }
   } catch (err) {
+    // Return 500 response if GET request failed
     console.error("GET Request Failed - Products", err);
     return res
       .status(500)
@@ -132,7 +135,7 @@ router.delete("/:id", async (req, res) => {
     if (deleteProductByID) {
       await deleteProductByID.destroy();
     } else {
-      // If product not found, return 404 error
+      // Return 404 response if product not found
       return res.status(404).json({ error: "Could not find product" });
     }
     // Return 200 response if DELETE request successful
@@ -142,6 +145,7 @@ router.delete("/:id", async (req, res) => {
       deleteProductByID,
     });
   } catch (err) {
+    // Return 500 response if DELETE request failed
     console.error("DELETE Request Failed - Product", err);
     return res
       .status(500)

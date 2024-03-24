@@ -7,11 +7,13 @@ router.get("/", async (req, res) => {
     const getCategories = await Category.findAll({
       include: [{ model: Product }],
     });
+    // Return 200 response if GET request succesful
     console.log("GET Request Successful - Categories");
     return res
       .status(200)
       .json({ message: "GET Request Successful - Categories", getCategories });
   } catch (err) {
+    // Return 500 response if GET request failed
     console.error("GET Request Failed - Categories", err);
     return res
       .status(500)
@@ -36,12 +38,11 @@ router.get("/:id", async (req, res) => {
         getCategoryByID,
       });
     } else {
-      // If category not found, return 404 error
+      // Return 404 response if category not found
       return res.status(404).json({ error: "Could not find category" });
     }
-
-    // Return 500 response if GET request failed
   } catch (err) {
+    // Return 500 response if GET request failed
     console.error("GET Request Failed - Category ID", err);
     return res
       .status(500)
@@ -55,11 +56,13 @@ router.post("/", async (req, res) => {
     const newCategory = await Category.create({
       category_name: req.body.category_name,
     });
+    // Return 200 response if POST request successful
     console.log("POST Request Successful - New Category");
     return res
       .status(200)
       .json({ message: "POST Request Successful - New Category", newCategory });
   } catch (err) {
+    // Return 500 response if POST request failed
     console.error("POST Request Failed - New Category", err);
     return res
       .status(500)
@@ -91,11 +94,11 @@ router.put("/:id", async (req, res) => {
         updateCategoryByID,
       });
     } else {
-      // If category not found, return 404 error
+      // Return 404 response if category not found
       return res.status(404).json({ error: "Could not find category" });
     }
-    // Return 500 response if PUT request failed
   } catch (err) {
+    // Return 500 response if PUT request failed
     console.error("PUT Request Failed - Update Category", err);
     return res
       .status(500)
@@ -113,7 +116,7 @@ router.delete("/:id", async (req, res) => {
     if (deleteCategoryByID) {
       await deleteCategoryByID.destroy();
     } else {
-      // If category not found, return 404 error
+      // Return 404 response if category not found
       return res.status(404).json({ error: "Could not find category" });
     }
 
@@ -124,6 +127,7 @@ router.delete("/:id", async (req, res) => {
       deleteCategoryByID,
     });
   } catch (err) {
+    // Return 500 response if DELETE request failed
     console.error("DELETE Request Failed - Delete Category", err);
     return res
       .status(500)
